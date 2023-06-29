@@ -23,12 +23,13 @@ class _HomeScreenState extends State<HomeScreen> {
   Color inactiveColor = Color(0xFF272A4E);
   Color maleColor = Color(0xFF272A4E);
   Color femaleColor = Color(0xFF272A4E);
+  int height = 160;
 
   void activeGender(Gender selectedGender) {
-    if(selectedGender == Gender.MALE) {
-        maleColor = activeColor;
-        femaleColor = inactiveColor;
-    }else {
+    if (selectedGender == Gender.MALE) {
+      maleColor = activeColor;
+      femaleColor = inactiveColor;
+    } else {
       maleColor = inactiveColor;
       femaleColor = activeColor;
     }
@@ -72,12 +73,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 )),
                 Expanded(
                     child: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          activeGender(Gender.FEMALE);
-                        });
-                      },
-                  child:  ReusableCard(
+                  onTap: () {
+                    setState(() {
+                      activeGender(Gender.FEMALE);
+                    });
+                  },
+                  child: ReusableCard(
                     colour: femaleColor,
                     child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -111,22 +112,26 @@ class _HomeScreenState extends State<HomeScreen> {
                   "HEIGHT",
                   style: textStyle,
                 ),
-                const Row(
+                Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.baseline,
                     textBaseline: TextBaseline.alphabetic,
                     children: [
                       Text(
-                        "180",
+                        height.toString(),
                         style: numberStyle,
                       ),
-                      Text("cm", style: textStyle)
+                      const Text("cm", style: textStyle)
                     ]),
                 Slider(
-                  value: 160,
+                  value: height.toDouble(),
                   min: 130,
                   max: 200,
-                  onChanged: (newValue) {},
+                  onChanged: (newValue) {
+                    setState(() {
+                      height = newValue.toInt();
+                    });
+                  },
                   activeColor: Colors.pinkAccent,
                   inactiveColor: Colors.grey,
                 )
