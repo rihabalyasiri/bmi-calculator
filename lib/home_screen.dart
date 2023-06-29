@@ -24,6 +24,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Color maleColor = Color(0xFF272A4E);
   Color femaleColor = Color(0xFF272A4E);
   int height = 160;
+  int weight = 60;
+  int age = 25;
 
   void activeGender(Gender selectedGender) {
     if (selectedGender == Gender.MALE) {
@@ -151,8 +153,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         "WEIGHT",
                         style: textStyle,
                       ),
-                      const Text(
-                        "60",
+                      Text(
+                        weight.toString(),
                         style: numberStyle,
                       ),
                       Row(
@@ -160,14 +162,22 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           RoundedButton(
                             icon: FontAwesomeIcons.minus,
-                            onPressed: () {},
+                            onPressed: () {
+                              setState(() {
+                                weight--;
+                              });
+                            },
                           ),
                           const SizedBox(
                             width: 15,
                           ),
                           RoundedButton(
                             icon: FontAwesomeIcons.plus,
-                            onPressed: () {},
+                            onPressed: () {
+                              setState(() {
+                                weight++;
+                              });
+                            },
                           )
                         ],
                       )
@@ -184,8 +194,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         "AGE",
                         style: textStyle,
                       ),
-                      const Text(
-                        "20",
+                      Text(
+                        age.toString(),
                         style: numberStyle,
                       ),
                       Row(
@@ -193,14 +203,22 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           RoundedButton(
                             icon: FontAwesomeIcons.minus,
-                            onPressed: () {},
+                            onPressed: () {
+                              setState(() {
+                                age--;
+                              });
+                            },
                           ),
                           const SizedBox(
                             width: 15,
                           ),
                           RoundedButton(
                             icon: FontAwesomeIcons.plus,
-                            onPressed: () {},
+                            onPressed: () {
+                              setState(() {
+                                age++;
+                              });
+                            },
                           )
                         ],
                       )
@@ -210,6 +228,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
+          ElevatedButton(onPressed: (){}, child: Text("Calculate"))
         ],
       ),
     );
