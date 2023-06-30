@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/result_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:bmi_calculator/card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -228,7 +229,29 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          ElevatedButton(onPressed: (){}, child: Text("Calculate"))
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const ResultScreen(),
+                ),
+              );
+            },
+            child: Container(
+              alignment: Alignment.center,
+              margin: const EdgeInsets.all(9),
+              color: Colors.pinkAccent,
+              width: double.infinity,
+              padding: const EdgeInsets.all(20),
+              child: const Text(
+                "CALCULATE",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 20),
+              ),
+            ),
+          )
         ],
       ),
     );
